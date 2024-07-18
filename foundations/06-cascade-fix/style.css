@@ -7,20 +7,37 @@ body {
   color: hsl(0, 0%, 0%);
   font-weight: 800;
 }
-
-
-.para.small-para {
+.small-para.para {
   font-size: 14px;
   font-weight: 800;
 }
-
 .para {
   font-size: 22px;
 }
 
+/* 
+Solution 1: 
+Move the below rule to after the .para rule
+
+.small-para {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+Why it works: Change the rule order (for two rules with equal specificity, the rule
+that was declared last wins)
+
+Solution 2: 
+Change the .small-para rule declaration by chaining two selectors, as shown in the 
+code above. 
+
+Why it works: Having two class selectors results in higher specificity, so this modified 
+rule now takes precedence. 
+
+*/
 
 
-#confirm-button {
+.button.confirm {
   background: green;
   color: white;
   font-weight: bold;
@@ -30,12 +47,39 @@ body {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   font-size: 20px;
+} 
+
+/* 
+Solution 1:
+Move the below rule to after the .button rule
+
+.confirm {
+  background: green;
+  color: white;
+  font-weight: bold;
+} 
+
+Why it works: Utilize rule order such that the .confirm rule overwrites the 
+background and text colors of the targeted button element 
+
+Solution 2:
+Change declaration to .button.confirm (chain two selectors as shown above)
+
+Why it works: This rule now uses two selectors, so the specificity is higher
+
+Solution 3:
+Change declaration to #confirm-button
+
+Why it works: ID selectors have higher specificity than class selectors
+*/
+
+
+
+div div.child {
+  color: rgb(0, 0, 0);
+  font-weight: 800;
+  font-size: 14px;
 }
-
-
-
-
-
 
 div.text {
   color: rgb(0, 0, 0);
@@ -43,8 +87,41 @@ div.text {
   font-weight: 100;
 }
 
-.text .child {
-  color: rgb(0, 0, 0);
-  font-weight: 800;
-  font-size: 14px;
-}
+
+
+
+
+/* 
+Solution 1:
+Change .child rule declaration to div.child and move it below the div.text rule
+
+Why it works: The modified rule has equal specificity, and moving it below gives it 
+precedence via rule order
+
+Solution 2:
+Change .child rule declaration to div.child.text (rule order doesn't matter)
+
+Why it works: The modified rule now has higher specificity (2 class selectors vs 1 class
+selector)
+
+Solution 3:
+Change div.text rule declaration to just .text and move it above .child rule
+
+Why it works: The two rules now have equal specificity and precedence is decided by 
+rule order
+
+Solution 4:
+Change .child rule declaration to .text .child (descendent combinator)
+
+Why it works: This rule now has higher specificity (2 class selectors vs 1 class selector)
+
+Solution 5:
+Change .child rule to div .child and move it  below the div.text rule
+
+Why it works: Rules now have same specificity (1 class + 1 type), so it must go to rule order
+
+Solution 6:
+Change .child to div div.child 
+
+Why: Higher Specificity
+*/
