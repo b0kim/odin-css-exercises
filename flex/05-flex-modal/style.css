@@ -20,6 +20,16 @@ body {
   width: 480px;
   border-radius: 10px;
   box-shadow: 2px 4px 16px rgba(0,0,0,.2);
+  
+  /* My code */
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* My Code */
+.icon {
+  flex: 0 0 auto;
 }
 
 .icon {
@@ -48,6 +58,22 @@ body {
   justify-content: center;
   border: 1px solid #eee;
   padding: 0;
+
+}
+
+
+/* My code */
+.header {
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.text {
+  margin-bottom: 15px;
 }
 
 button {
